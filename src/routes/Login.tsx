@@ -36,7 +36,7 @@ function Login() {
                     })
             })
             .catch((error) => {
-                setError(error);
+                setError(error.message);
                 dialogs.error(error);
             })
             .finally(() => {
