@@ -38,7 +38,7 @@ function Register() {
                     })
             })
             .catch((error) => {
-                setError(error.message)
+                setError("error")
                 dialogs.error(error);
             })
             .finally(() => {
