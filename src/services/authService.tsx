@@ -6,16 +6,14 @@ const register = (email: string, username: string, password: string) => {
     return axios.post(`${url}/auth/register`, { email, username, password });
 }
 
-const login = (email: string, password: string) =>
-    axios.post(`${url}/auth/login`, { email, password })
+const login = (email: string, password: string) => {
+    return axios.post(`${url}/auth/login`, { email, password })
         .then((response) => {
-            if (response.data.token) {
-                localStorage.setItem("token", JSON.stringify(response.data))
-            }
-            return response;
+            return response.data;
         }).catch((error) => {
-            console.log(error);
+            throw error;
         }
         );
+};
 
 export const auth = { register, login };

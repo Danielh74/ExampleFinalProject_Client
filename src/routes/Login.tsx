@@ -29,13 +29,13 @@ function Login() {
         auth
             .login(o.email, o.password)
             .then((response) => {
-                dialogs.success("Login Successful")
-                    .then(() => {
-                        login(response.data.token);
-                        navigate("/");
-                    })
+                dialogs.success("Login Successful");
+                localStorage.setItem("token", JSON.stringify(response.token))
+                login(response.token);
+                navigate("/");
             })
             .catch((error) => {
+                console.log(error);
                 setError("error");
                 dialogs.error(error);
             })
