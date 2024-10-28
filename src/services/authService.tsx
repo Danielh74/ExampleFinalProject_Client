@@ -13,6 +13,9 @@ const login = (email: string, password: string) =>
                 localStorage.setItem("token", JSON.stringify(response.data))
             }
             return response;
-        });
+        }).catch((error) => {
+            console.log(error);
+        }
+        );
 
 export const auth = { register, login };
